@@ -2,7 +2,8 @@
 # Neighborhood Blending
 
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/p)
-
+![PyPI - License](https://img.shields.io/pypi/l/NeighborBlend)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/NeighborBlend)
 
 
 
@@ -15,11 +16,110 @@ Neighborhood Blending is used to make similar queries more distinct and closer t
 Official repository: 
 https://github.com/sonisanskar/Neighborhood-Blending
 
-# Features
+PyPi repository: https://pypi.org/project/NeighborBlend/
+
+## Features
 - Cross-platform: Windows, Mac, and Linux are officially supported.
-- Works with Python  2.7,3.5,3.6,3.7
-# Requires
-- numpy, pandas , faiss-cpu or faiss-gpu
+- Works with Python 3.7, 3.8, 3.9
+
+## Requires
+- numpy, pandas , faiss-cpu,and scikit-learn
+
+## Installation
+We recommend using Python 3.5 or higher.
+\
+\
+**Install with pip**\
+Install the NeighborBlend using **`pip`**
+
+```bash
+  pip install NeighborBlend
+```
+## Getting Started
+First we list down all the functions which can be leveraged by the user
+
+**Function1**
+
+```bash
+  # Funct1 : neighborhood_search(emb,thresh,k_neighbors)
+
+  '''
+  Finds the neighbors of all samples embeddings above a given threshold 
+  '''
+  # Params
+  '''
+  emb: 2D matrix of embeddings
+  thresh : float value of similarity above which we want neighbors
+  k_neighbors: Number of neighbors which need to be considered for thresholding
+  '''
+  # Return
+  '''
+  match_index_lst: Dictionary with matching indexes
+  similarities_lst: Similarities scores corresponding to above indexes
+  '''
+```
+
+**Function2**
+```bash
+  # Funct2 :blend_neighborhood(emb, match_index_lst, similarities_lst)
+  '''
+  Performs weighted average and normalization of embeddings
+  with the simialrity scores of its neighbors
+  '''
+  # Params
+  '''
+  emb: 2D matrix of embeddings
+  match_index_lst: Dictionary with matching indexes
+  similarities_lst: Similarities scores corresponding to above indexes
+  '''
+  # Return
+  '''
+  updated_embedding: Embedding obtained after weighted average
+  '''
+```
+
+**Function3**
+```bash
+  # Funct3 :iterative_neighborhood_blending(emb, threshes,k_neighbors):
+  '''
+  Finds the neighbors of all samples embeddings above a given threshold and weighted average of the samles
+  '''
+  # Params
+  '''
+  emb: 2D matrix of embeddings
+  threshes: a list of thresholds applied iteratively
+  k_neighbors: number of neighbors to be considered
+  '''
+  # Return
+  '''
+  updated_embedding: Embedding obtained after weighted average
+  match_index_lst
+  similarities_lst
+  '''
+```
+
+
+
+
+
+## Example Usage
+
+````python
+from NeighborBlend import*
+import NeighborBlend
+#Func 1
+match_index_lst, similarities_lst = neighborhood_search(emb, thresh,k_neighbors)
+
+````
+Func3 is used for the final updation of embeddings
+
+````python
+#Func 3
+updated_emb,match_lst, simi_lst = iterative_neighborhood_blending(emb, threshes,k_neighbors)
+
+````
+
+
 ## Acknowledgements
 
  - [FAISS](https://github.com/facebookresearch/faiss)
