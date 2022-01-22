@@ -1,10 +1,8 @@
 
 # Neighborhood Blending
-
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/p)
+![PyPI - Python Version](https://img.shields.io/badge/Python-2.7|3.5|3.6|3.7|3.8-blue)
 ![PyPI - License](https://img.shields.io/pypi/l/NeighborBlend)
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/NeighborBlend)
-
 
 
 Generally, the embedding used for any task is already pre-trained and generalized. However, for a specific task, Neighborhood Blending/mixing can be used. Here, we try to use the fact that a specific query/instance is primarily affected by its nearest neighbors only. Neighborhood Blending is a general technique and can be used in text data with pre-trained embedding or on images data.
@@ -15,6 +13,8 @@ Neighborhood Blending is used to make similar queries more distinct and closer t
 
 Official repository: 
 https://github.com/sonisanskar/Neighborhood-Blending
+
+PyPi repository: https://pypi.org/project/NeighborBlend/
 
 ## Features
 - Cross-platform: Windows, Mac, and Linux are officially supported.
@@ -80,7 +80,7 @@ First we list down all the functions which can be leveraged by the user
 ```bash
   # Funct3 :iterative_neighborhood_blending(emb, threshes,k_neighbors):
   '''
-  Finds the neighbors of all samples embeddings above a given threshold and weighted average of the samles
+  Finds the neighbors of all samples embeddings above a given threshold and weighted average of the samples
   '''
   # Params
   '''
@@ -108,9 +108,10 @@ import NeighborBlend
 #Func 1
 match_index_lst, similarities_lst = neighborhood_search(emb, thresh,k_neighbors)
 
-Func3 is used for iteratively finding its neighbors and the dropping and updating
+
 ````
-Func3 is used for the final updation of embeddings
+**Func3 is used for the final updation of embeddings**
+**Func3 is used for iteratively finding its neighbors and the dropping and updating**
 
 ````python
 #Func 3
